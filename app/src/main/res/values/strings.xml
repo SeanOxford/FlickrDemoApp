@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AdobeProject</string>
+    <string name="dialog_title_error">Error:</string>
+    <string name="dialog_title_success">Success</string>
+    <string name="dialog_title_info">Info</string>
+    <string name="dialog_title_are_you_sure">Are you sure?</string>
+    <string name="dialog_option_yes">Yes</string>
+    <string name="dialog_option_cancel">Cancel</string>
+    <string name="dialog_message_error_no_internet">Unable to connect to server</string>
+    <string name="dialog_message_error_default">Something went wrong. Please try again.</string>
+    <string name="dialog_message_error_timeout">Network timed out.</string>
+    <string name="dialog_message_error_cache_timeout_error">The cache has timed out.</string>
+</resources>
