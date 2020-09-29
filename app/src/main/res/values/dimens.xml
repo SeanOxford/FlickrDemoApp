@@ -3,7 +3,7 @@
     <dimen name="base_margin">12dp</dimen>
     <dimen name="half_margin">6dp</dimen>
 
-    <dimen name="weather_toolbar_icon_dimen">40dp</dimen>
-    <dimen name="weather_toolbar_edittext_width">200dp</dimen>
+    <dimen name="search_toolbar_icon_dimen">40dp</dimen>
+    <dimen name="search_toolbar_edittext_width">200dp</dimen>
     <dimen name="gallery_image_height">300dp</dimen>
 </resources>

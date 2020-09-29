@@ -1,7 +1,6 @@
 package com.sean.oxford.adobeproject.screens.list
 
 import android.content.Context
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -19,7 +18,6 @@ import com.sean.oxford.adobeproject.screens.list.ListReturnAction.*
 import com.sean.oxford.adobeproject.screens.list.ListStateEvent.*
 import com.sean.oxford.adobeproject.screens.list.widgets.ImageAdapter
 import com.sean.oxford.adobeproject.screens.list.widgets.ImageAdapterCallback
-import com.sean.oxford.adobeproject.screens.list.widgets.LayoutManagerWrapper
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
@@ -28,8 +26,10 @@ class ListFragmentView(viewModel: ListViewModel, context: Context) :
     ImageAdapterCallback {
 
     private val adapter = ImageAdapter(this)
+    private lateinit var searchEditText: EditText
 
     override fun onViewStateChanged(viewState: ListViewState) {
+        searchEditText.setText(viewState.keyword)
         adapter.submitList(viewState.images)
     }
 
@@ -43,28 +43,26 @@ class ListFragmentView(viewModel: ListViewModel, context: Context) :
 
     override fun initTitle(): String = "List"
 
-    override fun resolveAction(action: ReturnAction) {
-        when (action) {
-            is GoToDetailScreenReturnAction -> navigateToImageDetailScreen(action.flickrImage)
+    override fun initToolbarView(toolbarView: View) {
+        val searchButton =
+            toolbarView.findViewById<ImageView>(R.id.ImageView_keyword_toolbar_search)
+        searchEditText = toolbarView.findViewById(R.id.EditText_keyword_toolbar)
+
+        searchButton.setOnClickListener {
+            setStateEvent(FetchImagesStateEvent(searchEditText.text.toString()))
+        }
+
+        searchEditText?.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                setStateEvent(FetchImagesStateEvent(searchEditText.text.toString()))
+            }
+            true
         }
     }
 
-
-    override fun initToolbarView(toolbarView: View?) {
-        val searchButton =
-            toolbarView?.findViewById<ImageView>(R.id.ImageView_weather_toolbar_search)
-        val cityEditText =
-            toolbarView?.findViewById<EditText>(R.id.EditText_weather_toolbar)
-
-        searchButton?.setOnClickListener {
-            setStateEvent(FetchImagesStateEvent(cityEditText?.text.toString()))
-        }
-
-        cityEditText?.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                setStateEvent(FetchImagesStateEvent(cityEditText.text.toString()))
-            }
-            true
+    override fun resolveAction(action: ReturnAction) {
+        when (action) {
+            is GoToDetailScreenReturnAction -> navigateToImageDetailScreen(action.flickrImage)
         }
     }
 

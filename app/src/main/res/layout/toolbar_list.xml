@@ -8,9 +8,9 @@
 
 
     <ImageView
-        android:id="@+id/ImageView_weather_toolbar_search"
-        android:layout_width="@dimen/weather_toolbar_icon_dimen"
-        android:layout_height="@dimen/weather_toolbar_icon_dimen"
+        android:id="@+id/ImageView_keyword_toolbar_search"
+        android:layout_width="@dimen/search_toolbar_icon_dimen"
+        android:layout_height="@dimen/search_toolbar_icon_dimen"
         android:layout_marginRight="@dimen/base_margin"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
@@ -22,8 +22,8 @@
         app:tint="#FFFFFF" />
 
     <EditText
-        android:id="@+id/EditText_weather_toolbar"
-        android:layout_width="@dimen/weather_toolbar_edittext_width"
+        android:id="@+id/EditText_keyword_toolbar"
+        android:layout_width="@dimen/search_toolbar_edittext_width"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/base_margin"
         android:imeOptions="actionSearch|flagNoExtractUi|flagNoFullscreen"
@@ -32,7 +32,7 @@
         android:textColor="@color/white"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/ImageView_weather_toolbar_search"
+        app:layout_constraintRight_toLeftOf="@+id/ImageView_keyword_toolbar_search"
         app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -23,6 +23,11 @@ class DetailFragmentView(
 
     private lateinit var mainImageView: ImageView
 
+    override fun onViewStateChanged(viewState: DetailViewState) {
+        val image = viewState.flickrImage
+        image?.let { glide.load(viewState.flickrImage.imgUrl).into(mainImageView) }
+    }
+
     override fun getLayoutRes(): Int = R.layout.fragment_detail
 
     override fun initViews(menu: Menu?) {
@@ -31,11 +36,6 @@ class DetailFragmentView(
     }
 
     override fun initTitle(): String = "Detail"
-
-    override fun onViewStateChanged(viewState: DetailViewState) {
-        val image = viewState.flickrImage
-        image?.let { glide.load(viewState.flickrImage.imgUrl).into(mainImageView) }
-    }
 
     override fun initialAction() {
         setStateEvent(RetrieveImageFromDbStateEvent(flickrImageId))

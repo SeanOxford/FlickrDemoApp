@@ -161,9 +161,7 @@ abstract class BaseFragmentView<vs : ViewState>(
     fun initAll(menu: Menu?) {
         initLoadingView()
         initViews(menu)
-        if (context is AppCompatActivity) {
-            initObservers()
-        }
+        initObservers()
         if (!viewModel.hasInitialized) {
             initialAction()
             viewModel.hasInitialized = true
@@ -182,7 +180,7 @@ abstract class BaseFragmentView<vs : ViewState>(
 
     abstract fun initViews(menu: Menu?)
 
-    open fun initToolbarView(toolbarView: View?) {}
+    open fun initToolbarView(toolbarView: View) {}
 
     protected open fun resolveAction(action: ReturnAction) {}
 

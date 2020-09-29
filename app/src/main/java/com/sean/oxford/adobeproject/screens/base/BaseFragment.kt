@@ -47,12 +47,12 @@ abstract class BaseFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         //Latest view-initializing callback
         if (!hasInitialized) {
-            baseView.initAll(menu)
             if (toolbarView != null) {
-                baseView.initToolbarView(toolbarView)
+                baseView.initToolbarView(toolbarView!!)
             } else {
                 inflater.inflate(getToolbarMenu(), menu)
             }
+            baseView.initAll(menu)
         }
         hasInitialized = true
         super.onCreateOptionsMenu(menu, inflater)

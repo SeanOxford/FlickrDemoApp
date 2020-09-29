@@ -10,7 +10,7 @@ class ListToolBar(context: Context): FrameLayout(context) {
 
     init {
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        inflate(context, R.layout.toolbar_weather, this)
+        inflate(context, R.layout.toolbar_list, this)
         isClickable = true
     }
 
