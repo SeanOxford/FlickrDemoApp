@@ -30,7 +30,6 @@ class ListFragmentView(viewModel: ListViewModel, context: Context) :
     private val adapter = ImageAdapter(this)
 
     override fun onViewStateChanged(viewState: ListViewState) {
-        Log.d("nnn", String.format("updating! count: ${viewState.images.size}"))
         adapter.submitList(viewState.images)
     }
 
@@ -79,7 +78,6 @@ class ListFragmentView(viewModel: ListViewModel, context: Context) :
     }
 
     override fun onScrollThresholdReached() {
-        Log.d("nnn", String.format("TRIGGERED"))
         setStateEvent(FetchImagesStateEvent(getCurrentViewState().keyword))
     }
 

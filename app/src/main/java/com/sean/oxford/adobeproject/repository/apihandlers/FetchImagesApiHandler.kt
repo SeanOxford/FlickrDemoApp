@@ -20,7 +20,6 @@ class FetchImagesApiHandler(
     private val appDao: AppDao
 ) : CacheRetrievingApiHandler<ImagesResponse, List<FlickrImage>, ListViewState>(stateEvent,
     apiCall = {
-        Log.d("nnn", String.format("GETTING MORE PAGE $page"))
         apiService.getImages(
             "flickr.photos.search",
             "2c28ed5f859dad50fdb9a3ad4a1023f9",
